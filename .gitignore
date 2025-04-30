@@ -1,32 +1,81 @@
-# Prerequisites
-*.d
+#include <iostream>
+using namespace std;
 
-# Compiled Object files
-*.slo
-*.lo
-*.o
-*.obj
+int main(){
 
-# Precompiled Headers
-*.gch
-*.pch
+    int a, b, c, d, e, f, g, h, i;
+    int a2, b2, c2, d2, e2, f2, g2, h2, i2;
+    int CPF, C1, C2, CX;
 
-# Compiled Dynamic libraries
-*.so
-*.dylib
-*.dll
+    cout << "digite o numero do seu CPF sem o codigo verificador (os ultimos dois numeros): ";
+    cin >> CPF;
+    
+    if (CPF < 1000000 || CPF > 999999999){
+        cout << "cpf invalido! ";
+        return 0;
+    }
 
-# Fortran module files
-*.mod
-*.smod
+    i = CPF%10;
+    CPF = CPF / 10;
+    h = CPF%10;
+    CPF = CPF / 10;
+    g = CPF%10;
+    CPF = CPF / 10;
+    f = CPF%10;
+    CPF = CPF / 10;
+    e = CPF%10;
+    CPF = CPF / 10;
+    d = CPF%10;
+    CPF = CPF / 10;
+    c = CPF%10;
+    CPF = CPF / 10;
+    b = CPF%10; 
+    CPF = CPF / 10;
+    a = CPF%10;
 
-# Compiled Static libraries
-*.lai
-*.la
-*.a
-*.lib
+    if (a == 0){
+        a = 0;
+    }if(b == 0){
+        b = 0;
+    }if(c == 0){
+        c = 0;
+    }if(d == 0){
+        d == 0;
+    }if(e == 0){
+        e = 0;
+    }if(f == 0){
+        f = 0;
+    }if(g == 0){
+        g = 0;
+    }if(h == 0){
+        h = 0;
+    }if(i == 0){
+        i = 0;
+    }
 
-# Executables
-*.exe
-*.out
-*.app
+    a2 = a*10; b2 = b*9; c2 = c*8; d2 = d*7; 
+    e2 = e*6; f2 = f*5; g2 = g*4; h2 = h*3; i2 = i*2;
+
+    C1 = a2 + b2 + c2 + d2 + e2 + f2 + g2 + h2 + i2;
+    C1 %= 11;
+    if(C1 < 2){
+        C1=0;
+    }else{
+    C1 = 11 - C1;
+    }
+
+    a2 = a*11; b2 = b*10; c2 = c*9; d2 = d*8; e2 = e*7; 
+    f2 = f*6; g2 = g*5; h2 = h*4; i2 = i*3; CX = C1*2;
+
+    C2 = a2 + b2 + c2 + d2 + e2 + f2 + g2 + h2 + i2 + CX;
+    C2 %= 11;
+    if(C2 < 2){
+        C2=0;
+    }else{
+    C2 = 11 - C2;
+    }
+    
+    cout << "seu CPF com o codigo verificador: " << a << b << c << "_" << d << e << f << "_" << g << h << i << "."<< C1 << C2;
+
+    return 0;
+}
